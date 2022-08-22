@@ -4,6 +4,8 @@ import Home from './views/Home';
 import Nav from './components/Nav';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import ToDoList from './views/ToDoList';
+import Login from './views/Login';
+import SignUp from './views/SignUp';
 
 export default class App extends Component {
   constructor() {
@@ -14,6 +16,12 @@ export default class App extends Component {
       name: 'Mo',
       age: 26
     }
+  }
+
+  logMeIn = (user) => {
+    this.setState({
+      user: user
+    })
   }
 
   addToAge = () => {
@@ -31,6 +39,8 @@ export default class App extends Component {
               <Route path='/' element={<Home name={this.state.name} age={this.state.age}/>}/>
               <Route path='/contact' element={<Contact/>}/>
               <Route path='/todolist' element={<ToDoList/>}/>
+              <Route path='/login' element={<Login logMeIn={this.logMeIn}/>}/>
+            <Route path='/signup' element={<SignUp/>}/>
             </Routes>
 
         </div>
